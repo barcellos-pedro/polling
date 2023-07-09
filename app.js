@@ -15,7 +15,7 @@ const Response = (
   options = { status: 200, headers: defaultHeaders }
 ) => {
   const data = typeof body === "string" ? body : toJSON(body);
-  response.writeHead(options.status, options.headers).end(data);
+  response.writeHead(options.status, { ...options.headers, ...defaultHeaders }).end(data);
 };
 
 const createJob = () => {
